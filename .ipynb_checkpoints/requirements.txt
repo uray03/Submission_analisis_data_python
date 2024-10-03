@@ -3,4 +3,4 @@ geopandas==0.14.4
 matplotlib==3.7.1
 numpy==1.26.4
 pandas==2.1.4
-seaborn==0.13.1git 
+seaborn==0.13.1
