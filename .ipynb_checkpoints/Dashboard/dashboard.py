@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import sys
 import subprocess
-from babel.numbers import format_currency
 
 
 def install(package):
