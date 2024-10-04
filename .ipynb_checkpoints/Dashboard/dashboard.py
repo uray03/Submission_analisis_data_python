@@ -3,17 +3,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from babel.numbers import format_currency
+import requests
+import io
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Set uniform style and color palette
 sns.set(style='whitegrid')
+
+
+
 
 # Load dataset
 @st.cache_data
 def load_data():
     url = 'https://raw.githubusercontent.com/uray03/Submission_analisis_data_python/main/.ipynb_checkpoints/Dashboard/all_data.csv'
-    return pd.read_csv(url)
+    response = requests.get(url, verify=False)  # Disable SSL verification
+    data = response.content
+    df = pd.read_csv(io.BytesIO(data))
+    return df
 
 try:
     all_df = load_data()
