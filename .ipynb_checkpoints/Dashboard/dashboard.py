@@ -1,9 +1,29 @@
 import streamlit as st
 import pandas as pd
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import seaborn as sns
+import sys
+import subprocess
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+except ImportError:
+    st.error("Error: Matplotlib or Seaborn not found. Attempting to install...")
+    try:
+        install('matplotlib')
+        install('seaborn')
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+    except Exception as e:
+        st.error(f"Failed to install required packages: {str(e)}")
+        st.stop()
+
 from babel.numbers import format_currency
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
