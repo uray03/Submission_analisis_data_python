@@ -1,9 +1,30 @@
 import streamlit as st
 import pandas as pd
+import sys
+import subprocess
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
+from babel.numbers import format_currency
+
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+except ImportError:
+    install('matplotlib')
+    install('seaborn')
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
 from babel.numbers import format_currency
 
 # Set uniform style and color palette
