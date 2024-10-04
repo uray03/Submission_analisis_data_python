@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import sys
 import subprocess
-import seaborn as sns
 from babel.numbers import format_currency
 
 
