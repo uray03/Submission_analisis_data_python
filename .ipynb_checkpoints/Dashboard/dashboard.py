@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 import sys
 import subprocess
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 import seaborn as sns
 from babel.numbers import format_currency
 
